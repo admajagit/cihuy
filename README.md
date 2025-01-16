@@ -1,4 +1,4 @@
-SET UP INSTALL LARAVEL =
+SET UP INSTALL LARAVEL
 1.git clone https://github.com/admajagit/rental-mobil.git
 2.cd rental-mobil
 3.cp .env.example .env
