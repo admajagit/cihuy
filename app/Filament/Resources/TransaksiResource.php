@@ -2,16 +2,21 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\TransaksiResource\Pages;
-use App\Filament\Resources\TransaksiResource\RelationManagers;
-use App\Models\Transaksi;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Forms\Form;
+use App\Models\Transaksi;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\TextArea;
+use Filament\Forms\Components\Checkbox;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\TransaksiResource\Pages;
+use Filament\Tables\Columns\TextColumn;
+use App\Filament\Resources\TransaksiResource\RelationManagers;
 
 class TransaksiResource extends Resource
 {
@@ -23,7 +28,57 @@ class TransaksiResource extends Resource
     {
         return $form
             ->schema([
-                //
+                // Dropdown for selecting 'kendaraan_id' with the relationship
+                Forms\Components\Select::make('kendaraan_id')
+                    ->label('Kendaraan')
+                    ->relationship('kendaraan', 'jenis_mobil') // Adjust as necessary
+                    ->required()
+                    ->searchable(),
+
+                // Input for 'lokasi'
+                Forms\Components\TextInput::make('lokasi')
+                    ->label('Lokasi')
+                    ->required()
+                    ->maxLength(255),
+
+                // Date Picker for 'tanggal_mulai'
+                Forms\Components\DatePicker::make('tanggal_mulai')
+                    ->label('Tanggal Mulai')
+                    ->required()
+                    ->default(now()),
+
+                // Input for 'durasi' (in days)
+                Forms\Components\TextInput::make('durasi')
+                    ->label('Durasi (Hari)')
+                    ->required()
+                    ->numeric(),
+
+                // Date Picker for 'tanggal_berakhir'
+                Forms\Components\DatePicker::make('tanggal_berakhir')
+                    ->label('Tanggal Berakhir')
+                    ->required(),
+
+                // Input for 'total_harga'
+                Forms\Components\TextInput::make('total_harga')
+                    ->label('Total Harga')
+                    ->required()
+                    ->numeric()
+                    ->maxLength(15),
+
+                // Dropdown for 'status_pembayaran'
+                Forms\Components\Select::make('status_pembayaran')
+                    ->label('Status Pembayaran')
+                    ->options([
+                        'pending' => 'Pending',
+                        'paid' => 'Paid',
+                    ])
+                    ->default('pending')
+                    ->required(),
+
+                // Optional: A checkbox for status confirmation or a note if needed
+                // Forms\Components\Checkbox::make('status_pembayaran')
+                //     ->label('Status Pembayaran')
+                //     ->default(false),
             ]);
     }
 
@@ -31,10 +86,17 @@ class TransaksiResource extends Resource
     {
         return $table
             ->columns([
-                //
+                
+                TextColumn::make('kendaraan.jenis_mobil')->label('Kendaraan'),
+                TextColumn::make('lokasi'),
+                TextColumn::make('tanggal_mulai'),
+                TextColumn::make('durasi'),
+                TextColumn::make('tanggal_berakhir'),
+                TextColumn::make('total_harga'),
+                TextColumn::make('status_pembayaran'),
             ])
             ->filters([
-                //
+                // Add filters as necessary
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -49,7 +111,7 @@ class TransaksiResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            // Define any relations if necessary
         ];
     }
 

@@ -35,7 +35,8 @@
                             <p class="card-text">
                                 <strong>Nomor Plat:</strong> {{ $kendaraan->nomor_plat }}<br>
                                 <strong>Tahun Pembuatan:</strong> {{ $kendaraan->tahun_pembuatan }}<br>
-                                <strong>Status:</strong> {{ $kendaraan->status_ketersediaan }}
+                                <strong>Status:</strong> {{ $kendaraan->status_ketersediaan }}<br>
+                                <strong>harga:</strong> {{ $kendaraan->harga_sewa }}
                             </p>
                         </div>
                         <div class="card-footer text-center">
