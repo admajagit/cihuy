@@ -32,6 +32,7 @@ class KendaraanResource extends Resource
                 TextInput::make('nomor_plat'),
                 TextInput::make('tahun_pembuatan'),
                 TextInput::make('status_ketersediaan'),
+                TextInput::make('harga_sewa'),
                 FileUpload::make('gambar') // Menambahkan input gambar
                 ->image() // Hanya menerima file gambar
                 ->disk('public') // Menyimpan file di disk 'public' // Menyimpan file dalam direktori 'kendaraans'
@@ -47,6 +48,7 @@ class KendaraanResource extends Resource
                 TextColumn::make('nomor_plat'),
                 TextColumn::make('tahun_pembuatan'),
                 TextColumn::make('status_ketersediaan'),
+                TextColumn::make('harga_sewa'),
                 ImageColumn::make('gambar') // Menampilkan gambar
     ->disk('public') // Lokasi disk tempat gambar disimpan
     ->label('Gambar') // Label kolom
