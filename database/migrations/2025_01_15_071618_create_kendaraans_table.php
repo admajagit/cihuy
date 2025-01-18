@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nomor_plat');
             $table->string('tahun_pembuatan');
             $table->string('status_ketersediaan');
+            $table->string('harga_sewa');
             $table->string('gambar');
             $table->timestamps();
         });
