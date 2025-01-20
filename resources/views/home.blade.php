@@ -26,7 +26,7 @@
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
                         @if($kendaraan->gambar)
-                            <img src="{{ asset('storage/' . $kendaraan->gambar) }}" class="card-img-top" alt="{{ $kendaraan->jenis_mobil }}">
+                            <img src="{{ asset('storage/'. $kendaraan->gambar) }}" class="card-img-top" alt="{{ $kendaraan->jenis_mobil }}">
                         @else
                             <img src="https://via.placeholder.com/150" class="card-img-top" alt="No Image">
                         @endif
@@ -40,7 +40,7 @@
                             </p>
                         </div>
                         <div class="card-footer text-center">
-                            <button class="btn btn-primary">Sewa Kendaraan</button>
+                            <a href="{{ route('transaksi.create', ['kendaraan_id' => $kendaraan->id]) }}" class="btn btn-primary">Sewa Kendaraan</a>
                         </div>
                     </div>
                 </div>

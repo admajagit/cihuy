@@ -9,9 +9,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Transaksi extends Model
 {
     use HasFactory;
-
-    //izinkan kendaraan_id menemapilkan list kendaraan  
-    protected $fillable = ['kendaraan_id'];
+    // Semua kolom diizinkan untuk diisi
+    protected $guarded = [];
     
     //izinkan column kendaraan_id mengakses semua data di kendaraan
     public function kendaraan()
