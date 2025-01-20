@@ -31,15 +31,15 @@ class TransaksiResource extends Resource
                 // Dropdown for selecting 'kendaraan_id' with the relationship
                 Forms\Components\Select::make('kendaraan_id')
                     ->label('Kendaraan')
-                    ->relationship('kendaraan', 'jenis_mobil') // Adjust as necessary
+                    ->relationship('kendaraan', 'jenis_mobil') // Make sure the relationship and field names are correct
                     ->required()
                     ->searchable(),
 
                 // Input for 'lokasi'
                 Forms\Components\TextInput::make('lokasi')
                     ->label('Lokasi')
-                    ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->required(), // Make 'lokasi' required to prevent the SQL error you faced
 
                 // Date Picker for 'tanggal_mulai'
                 Forms\Components\DatePicker::make('tanggal_mulai')
@@ -74,11 +74,6 @@ class TransaksiResource extends Resource
                     ])
                     ->default('pending')
                     ->required(),
-
-                // Optional: A checkbox for status confirmation or a note if needed
-                // Forms\Components\Checkbox::make('status_pembayaran')
-                //     ->label('Status Pembayaran')
-                //     ->default(false),
             ]);
     }
 
@@ -86,7 +81,6 @@ class TransaksiResource extends Resource
     {
         return $table
             ->columns([
-                
                 TextColumn::make('kendaraan.jenis_mobil')->label('Kendaraan'),
                 TextColumn::make('lokasi'),
                 TextColumn::make('tanggal_mulai'),
