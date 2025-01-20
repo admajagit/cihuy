@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('transaksis', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('kendaraan_id')->constrained()->onDelete('cascade');
+            $table->foreignId('kendaraan_id');
             $table->string('lokasi');
             $table->date('tanggal_mulai');
-            $table->integer('durasi');
             $table->date('tanggal_berakhir');
-            $table->decimal('total_harga', 15, 2);
+            $table->enum('payment', ['BRI', 'BCA','BANK','BANK JAGO']);
+            $table->string('no_rekening')->nullable();
             $table->enum('status_pembayaran', ['pending', 'paid'])->default('pending');
+            $table->decimal('total_pembayaran',15, 2);
             $table->timestamps();
 
             // menghubungkan column kendaraan_id  foreign key ke column id di table kendaraan
