@@ -16,8 +16,9 @@ return new class extends Migration
             $table->string('jenis_mobil');
             $table->string('nomor_plat');
             $table->string('tahun_pembuatan');
-            $table->string('status_ketersediaan');
-            $table->string('harga_sewa');
+            $table->enum('status_ketersediaan', ['tersedia', 'tidak tersedia'])->default('tersedia');
+            $table->decimal('harga_sewa', 15, 2); 
+            $table->integer('durasi');
             $table->string('gambar');
             $table->timestamps();
         });

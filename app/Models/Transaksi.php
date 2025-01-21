@@ -17,4 +17,20 @@ class Transaksi extends Model
     {
         return $this->belongsTo(Kendaraan::class, 'kendaraan_id');
     }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        // Event yang terjadi saat membuat transaksi
+        static::creating(function ($transaksi) {
+            // Ambil kendaraan terkait berdasarkan kendaraan_id
+            $kendaraan = Kendaraan::find($transaksi->kendaraan_id);
+            
+            // Jika kendaraan ditemukan, set nilai no_rekening dengan harga_sewa
+            if ($kendaraan) {
+                $transaksi->total_pembayaran= $kendaraan->harga_sewa;
+            }
+        });
+    }
 }
