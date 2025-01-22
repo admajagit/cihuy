@@ -273,25 +273,37 @@ body {
   margin-bottom: 20px;
 }
 
-/* Melanjutkan Vehicle Grid */
+/* Vehicle Grid */
 .vehicle-grid {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
+/* Row (Grid System) */
 .row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 24px;
+  justify-content: center;
 }
 
+/* Card Styling */
 .card {
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
+  background-color: #00449F; /* Background biru */
+  border-radius: 12px; /* Border radius untuk card */
   overflow: hidden;
   transition: transform 0.3s ease;
-  height: 100%;
+  height: auto;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
 }
 
 .card:hover {
@@ -299,50 +311,61 @@ body {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* Image Styling */
 .card-img-top {
-  width: 100%;
+  width: 200px;
   height: 200px;
   object-fit: cover;
+  border-radius: 8px; /* Border radius pada gambar */
 }
 
+/* Card Body Styling */
 .card-body {
-  padding: 16px;
+  padding: 10px;
 }
 
 .card-title {
-  color: #00449F;
+  color: white;
   font-size: 18px;
+  font-family: 'Poppins', sans-serif;
   font-weight: bold;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
+  text-align: center;
 }
 
 .card-text {
-  color: #555;
+  color: white;
   font-size: 14px;
-  line-height: 1.6;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.5;
 }
 
+/* Card Footer Styling */
 .card-footer {
-  padding: 16px;
-  background-color: #f8f9fa;
-  border-top: 1px solid #e0e0e0;
+  width: 100%;
+  text-align: center;
+  margin-top: 12px;
 }
 
 .btn-primary {
-  background-color: #00449F;
-  color: white;
+  background-color: white; /* Tombol putih */
+  color: black; /* Teks hitam */
   padding: 8px 16px;
   border: none;
   border-radius: 4px;
-  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: bold;
   text-decoration: none;
   display: inline-block;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .btn-primary:hover {
-  background-color: #003380;
+  background-color: #f0f0f0;
+  color: #00449F;
 }
+
 
 /* Footer Styling */
 .footer {
